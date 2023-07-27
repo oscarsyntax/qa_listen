@@ -1,0 +1,6 @@
+*
+!.gitignore
+!make.sh
+!Makefile
+!qa.md
+!index.html
