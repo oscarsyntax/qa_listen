@@ -8,16 +8,19 @@ die() {
 }
 
 build() {
-  if [[ "$#" -lt '1' ]]; then
-    die "Error[$0]: invalid argc"
-  fi
-  local infile="$1"
+  local infile='qa.md'
   local outfile='index.html'
-  pandoc -s -i \
+  pandoc \
+    -s \
+    -i \
     -t revealjs \
     --variable theme=white \
     "${infile}" \
     -o "${outfile}"
+}
+
+serve() {
+  python -m http.server
 }
 
 main() {
@@ -25,12 +28,10 @@ main() {
     die "Error[$0]: invalid argc"
   fi
   local verb="$1"
-
+  shift
   case "${verb}" in
-    build)
-      shift
-      build "$@"
-      ;;
+    build) build "$@" ;;
+    serve) serve "$@" ;;
   esac
 }
 

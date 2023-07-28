@@ -3,8 +3,8 @@ all: build
 
 .PHONY: build
 build:
-	bash ./make.sh build qa.md
+	bash ./make.sh build
 
 .PHONY: serve
 serve: build
-	python -m http.server
+	bash ./make.sh serve
